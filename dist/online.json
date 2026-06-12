@@ -6,27 +6,27 @@
         "version": 2,
         "arguments": {
           "name": "风车动漫",
-          "description": "专注日漫，1080P高清，更新及时",
+          "description": "专注动漫，当前 fengchedmp.com 页面结构适配候选源",
           "iconUrl": "https://fengchedmp.com/favicon.ico",
           "searchConfig": {
-            "searchUrl": "https://fengchedmp.com/search/{keyword}",
+            "searchUrl": "https://fengchedmp.com/vsh/{keyword}-------------.html",
             "searchUseOnlyFirstWord": false,
             "searchRemoveSpecial": true,
             "searchUseSubjectNamesCount": 2,
             "subjectFormatId": "indexed",
             "selectorSubjectFormatIndexed": {
-              "selectNames": ".video-info-header a, .thumb-txt, .card-title",
-              "selectLinks": ".video-info-header a, .thumb-menu a",
+              "selectNames": ".module-card-item-title a",
+              "selectLinks": ".module-card-item-title a",
               "preferShorterName": true
             },
             "channelFormatId": "index-grouped",
             "selectorChannelFormatFlattened": {
-              "selectChannelNames": ".anthology-tab a, .play-tab .nav-item",
+              "selectChannelNames": "#y-playList .tab-item span",
               "matchChannelName": "^(?<ch>.+?)(\\d+)?$",
-              "selectEpisodeLists": ".anthology-list-play, .list-unstyled",
-              "selectEpisodesFromList": "a",
+              "selectEpisodeLists": ".module-list .module-play-list-content",
+              "selectEpisodesFromList": "a.module-play-list-link",
               "selectEpisodeLinksFromList": "",
-              "matchEpisodeSortFromName": "第\\s*(?<ep>\\d+(\\.\\d+)?)\\s*[话集]|EP\\s*(?<ep>\\d+(\\.\\d+)?)"
+              "matchEpisodeSortFromName": "第\\s*(?<ep>\\d+(?:\\.\\d+)?)\\s*[话集]"
             },
             "defaultResolution": "1080P",
             "defaultSubtitleLanguage": "CHS",
@@ -38,8 +38,8 @@
             },
             "matchVideo": {
               "enableNestedUrl": true,
-              "matchNestedUrl": "^.+(m3u8|vip|xigua\\.php).+\\?",
-              "matchVideoUrl": "(^https?://(?!.*https?://).+((\\.mp4)|(\\.mkv)|(m3u8)).*(\\?.+)?)|(akamaized)|(bilivideo.com)",
+              "matchNestedUrl": "^.+(m3u8|vip|xigua\\.php|artplayer\\.php).+\\?",
+              "matchVideoUrl": "(^https?://(?!.*https?://).+((\\.mp4)|(\\.mkv)|(m3u8)).*(\\?.+)?)|(https?:\\\\/\\\\/[^\"'<>]+?m3u8[^\"'<>]*)|(akamaized)|(bilivideo.com)",
               "cookies": "quality=1080",
               "addHeadersToVideo": {
                 "referer": "https://fengchedmp.com/",
