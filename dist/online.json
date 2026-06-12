@@ -1,54 +1,61 @@
 {
-  "exportedMediaSourceDataList": {
-    "mediaSources": [
-      {
-        "factoryId": "web-selector",
-        "version": 2,
-        "arguments": {
-          "name": "风车动漫",
-          "description": "专注动漫，当前 fengchedmp.com 页面结构适配候选源",
-          "iconUrl": "https://fengchedmp.com/favicon.ico",
-          "searchConfig": {
-            "searchUrl": "https://fengchedmp.com/vsh/{keyword}-------------.html",
-            "searchUseOnlyFirstWord": false,
-            "searchRemoveSpecial": true,
-            "searchUseSubjectNamesCount": 2,
-            "subjectFormatId": "indexed",
-            "selectorSubjectFormatIndexed": {
-              "selectNames": ".module-card-item-title a",
-              "selectLinks": ".module-card-item-title a",
-              "preferShorterName": true
-            },
-            "channelFormatId": "index-grouped",
-            "selectorChannelFormatFlattened": {
-              "selectChannelNames": "#y-playList .tab-item span",
-              "matchChannelName": "^(?<ch>.+?)(\\d+)?$",
-              "selectEpisodeLists": ".module-list .module-play-list-content",
-              "selectEpisodesFromList": "a.module-play-list-link",
-              "selectEpisodeLinksFromList": "",
-              "matchEpisodeSortFromName": "第\\s*(?<ep>\\d+(?:\\.\\d+)?)\\s*[话集]"
-            },
-            "defaultResolution": "1080P",
-            "defaultSubtitleLanguage": "CHS",
-            "filterByEpisodeSort": true,
-            "filterBySubjectName": true,
-            "selectMedia": {
-              "distinguishSubjectName": true,
-              "distinguishChannelName": true
-            },
-            "matchVideo": {
-              "enableNestedUrl": true,
-              "matchNestedUrl": "^.+(m3u8|vip|xigua\\.php|artplayer\\.php).+\\?",
-              "matchVideoUrl": "(^https?://(?!.*https?://).+((\\.mp4)|(\\.mkv)|(m3u8)).*(\\?.+)?)|(https?:\\\\/\\\\/[^\"'<>]+?m3u8[^\"'<>]*)|(akamaized)|(bilivideo.com)",
-              "cookies": "quality=1080",
-              "addHeadersToVideo": {
-                "referer": "https://fengchedmp.com/",
-                "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36"
-              }
+  "mediaSources": [
+    {
+      "factoryId": "web-selector",
+      "version": 2,
+      "arguments": {
+        "name": "风车动漫-p",
+        "description": "fengchedmp.com 修正版：使用 /vsh/{keyword} 搜索，并直接进入播放页解析选集。",
+        "iconUrl": "https://fengchedmp.com/favicon.ico",
+        "searchConfig": {
+          "searchUrl": "https://fengchedmp.com/vsh/{keyword}-------------.html",
+          "searchUseOnlyFirstWord": false,
+          "searchRemoveSpecial": true,
+          "searchUseSubjectNamesCount": 3,
+          "rawBaseUrl": "https://fengchedmp.com/",
+          "requestInterval": 2000,
+          "subjectFormatId": "indexed",
+          "selectorSubjectFormatIndexed": {
+            "selectNames": ".module-search-item .module-card-item-title, .module-search-item .module-item-title, .module-search-item h3 a, .module-search-item .video-info-header a, .module-card-item-title, .module-item-title, .video-info-header a, a[href^='/v/'][title]",
+            "selectLinks": ".module-search-item a[href^='/p/'], .module-search-item a[href*='/p/'], .module-card-item a[href^='/p/'], .module-item a[href^='/p/'], a[href^='/p/'][class*='play'], a[href*='/p/'][class*='play']",
+            "preferShorterName": true
+          },
+          "channelFormatId": "no-channel",
+          "selectorChannelFormatNoChannel": {
+            "selectEpisodes": "a[href^='/p/'], a[href*='/p/']",
+            "selectEpisodeLinks": "",
+            "matchEpisodeSortFromName": "(?:第\\s*)?(?<ep>\\d+(?:\\.\\d+)?)(?:\\s*[话話集]|集)|EP\\s*(?<ep>\\d+(?:\\.\\d+)?)"
+          },
+          "selectorChannelFormatFlattened": {
+            "selectChannelNames": ".anthology-tab a, .play-tab .nav-item, .module-tab-item, .module-player-tab a, .module-player-tab span",
+            "matchChannelName": "^(?<ch>.+?)(?:\\s*\\d+)?$",
+            "selectEpisodeLists": ".anthology-list-play, .list-unstyled, .module-play-list, .module-player-list, .module-player-list-content, .playlist, .episode-list",
+            "selectEpisodesFromList": "a[href^='/p/'], a[href*='/p/']",
+            "selectEpisodeLinksFromList": "",
+            "matchEpisodeSortFromName": "(?:第\\s*)?(?<ep>\\d+(?:\\.\\d+)?)(?:\\s*[话話集]|集)|EP\\s*(?<ep>\\d+(?:\\.\\d+)?)"
+          },
+          "defaultResolution": "1080P",
+          "defaultSubtitleLanguage": "CHS",
+          "onlySupportsPlayers": [],
+          "filterByEpisodeSort": true,
+          "filterBySubjectName": true,
+          "selectMedia": {
+            "distinguishSubjectName": true,
+            "distinguishChannelName": false
+          },
+          "matchVideo": {
+            "enableNestedUrl": true,
+            "matchNestedUrl": "(^https?:\\/\\/[^\\s'\"<>]+(?:m3u8|mp4|mkv|vip|xigua\\.php|player|play|jx|url=)[^\\s'\"<>]*)|(^\\/[^\\s'\"<>]+(?:m3u8|mp4|mkv|vip|xigua\\.php|player|play|jx|url=)[^\\s'\"<>]*)",
+            "matchVideoUrl": "^https?:\\/\\/(?!.*https?:\\/\\/)[^\\s'\"<>]+(?:\\.m3u8|\\.mp4|\\.mkv|m3u8|akamaized|bilivideo)[^\\s'\"<>]*$",
+            "cookies": "quality=1080",
+            "addHeadersToVideo": {
+              "referer": "https://fengchedmp.com/",
+              "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36"
             }
           }
-        }
+        },
+        "tier": 2
       }
-    ]
-  }
+    }
+  ]
 }
