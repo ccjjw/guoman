@@ -5,8 +5,8 @@
         "factoryId": "web-selector",
         "version": 2,
         "arguments": {
-          "name": "风车动漫",
-          "description": "专注动漫，当前 fengchedmp.com 页面结构适配候选源",
+          "name": "风车动漫-播放修复CSS1",
+          "description": "fengchedmp.com 适配源；搜索地址已更新，播放匹配改为 css1.json 同款兼容写法",
           "iconUrl": "https://fengchedmp.com/favicon.ico",
           "searchConfig": {
             "searchUrl": "https://fengchedmp.com/vsh/{keyword}-------------.html",
@@ -37,13 +37,13 @@
               "distinguishChannelName": true
             },
             "matchVideo": {
-              "enableNestedUrl": false,
-              "matchNestedUrl": "^.+(vip|xigua\\.php).+\\?",
-              "matchVideoUrl": "^(?!.*(?:artplayer\\.php|url=))(?!.*https?://.*https?://)(?<v>https?://[^\"'<>\\s]+?(?:\\.m3u8|\\.mp4|\\.mkv)(?:\\?[^\"'<>\\s]*)?)$|(akamaized)|(bilivideo\\.com)",
+              "enableNestedUrl": true,
+              "matchNestedUrl": "$^",
+              "matchVideoUrl": "(^http(s)?:\\/\\/(?!.*http).+\\.(mp4|m3u8|flv|mkv))|(url=(?<v>http(s)?:\\/\\/.+\\.(mp4|m3u8|flv|mkv)))|(^http(s)?:\\/\\/(?!.*http).+(sign\\.bytetos|sign\\.byteimg|mcloud\\.139|cloudflarestorage|tos-cn)\\.com(?!.*\\.ts).+(-expires|-signature))|((bilivideo|akamaized|szbdyd)\\.com(?!.*\\.ts))|(\\/video\\/tos\\/alisg\\/)|(\\/video\\/.*mime_type=video)",
               "cookies": "quality=1080",
               "addHeadersToVideo": {
-                "referer": "https://fengchedmp.com/",
-                "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36"
+                "referer": "",
+                "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/58.0.3029.110 Safari/537.3"
               }
             }
           }
